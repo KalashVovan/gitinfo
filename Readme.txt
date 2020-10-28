@@ -1,4 +1,4 @@
-Клонирование проекта в папку nameProgect:
+﻿Клонирование проекта в папку nameProgect:
 git clone https://...(ссылка) nameProject (папка)
 
 Добавить файлы в коммит:
@@ -16,3 +16,5 @@ git pull
 Авторство коммитов:
 git config --global user.email "Your mail"
 git config --global user.name "Your name"
+
+Файл изменён 16.10.20г
