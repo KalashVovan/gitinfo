@@ -1,0 +1,77 @@
+C:\TEMP\xampp\mysql\bin\mysql.exe -u root
+create database Countries;
+use Countries;
+CREATE TABLE tour ( id INT NOT NULL primary key , country VARCHAR(255) , transport VARCHAR(255) , cost VARCHAR(255) );
+INSERT INTO tour values ('1', 'France', 'train', '25000');
+INSERT INTO tour values ('2', 'Japan', 'plain', '35000');
+INSERT INTO tour values ('3', 'China', 'train', '30000');
+INSERT INTO tour values ('4', 'Kazahstan', 'train', '10000');
+INSERT INTO tour values ('5', 'Germany', 'train', '20000');
+INSERT INTO tour values ('6', 'Canada', 'plain', '40000');
+INSERT INTO tour values ('7', 'Mexico', 'plain', '45000');
+INSERT INTO tour values ('8', 'Ukraine', 'train', '15000');
+INSERT INTO tour values ('9', 'Russia', 'plain', '50000');
+INSERT INTO tour values ('10', 'USA', 'plain', '50000');
+select * from tour;
+select * from tour where country='Russia';
+select * from tour where transport='train';
+select * from tour where cost>20000;
+select * from tour ORDER BY cost;
+select min(cost) from tour;
+select min(cost) from tour where transport='plain';
+
+create database 'Продажи_магазина';
+use Продажи_магазина;
+CREATE TABLE Продавец ( id INT NOT NULL primary key , ФИО VARCHAR(255) , Город VARCHAR(255) , Процент INT);
+CREATE TABLE Покупатель ( id INT NOT NULL primary key , ФИО VARCHAR(255) , Город VARCHAR(255);
+CREATE TABLE Производитель ( id INT NOT NULL primary key , Название VARCHAR(255) , Страна VARCHAR(255));
+CREATE TABLE Товар ( id INT NOT NULL primary key , Название VARCHAR(255) , Стоимость INT ,  Производитель VARCHAR(255));
+INSERT INTO Продавец values ('1', 'Зубенко Михаил Петрович', 'Ташкент', '5');
+INSERT INTO Продавец values ('2', 'Силина Александра Андреевна', 'Пермь', '5');
+INSERT INTO Продавец values ('3', 'Александров Кирилл Игоревич', 'Самара', '6');
+INSERT INTO Продавец values ('4', 'Бусыгина Дарья Александровна', 'Омск', '6');
+INSERT INTO Продавец values ('5', 'Винокуров Ян Павлович', 'Гленджик', '7');
+INSERT INTO Продавец values ('6', 'Демидов Данил Иванович', 'Санкт-Петербург', '7');
+INSERT INTO Продавец values ('7', 'Дульцев Артём Игоревич', 'Москва', '8');
+INSERT INTO Продавец values ('8', 'Завальнюк Александр Валерьевич', 'Воронеж', '8');
+INSERT INTO Продавец values ('9', 'Завьялов Вениамин Алексеевич', 'Сочи', '9');
+INSERT INTO Продавец values ('10', 'Конырев Кирилл Андреевич', 'Новороссийск', '9');
+
+INSERT INTO Покупатель values ('1', 'Горбачёв Вакуум Федосеевич', 'Пермь' );
+INSERT INTO Покупатель values ('2', 'Фокин Владислав Вениаминович', 'Москва' );
+INSERT INTO Покупатель values ('3', 'Князев Харитон Богданович', 'Краснодар' );
+INSERT INTO Покупатель values ('4', 'Овчинников Семён Романович', 'Владивосток' );
+INSERT INTO Покупатель values ('5', 'Захарова Анна Глебовна', 'Кострома' );
+INSERT INTO Покупатель values ('6', 'Кудрянцева Виктория Дмитриевна', 'Пенза' );
+INSERT INTO Покупатель values ('7', 'Ситникова Кристина Андреевна', 'Смоленск' );
+INSERT INTO Покупатель values ('8', 'Боброва София Дмитриевна', 'Южно-Сахалинск' );
+INSERT INTO Покупатель values ('9', 'Богданов Герасим Юлианович', 'Екатеринбург' );
+INSERT INTO Покупатель values ('10', 'Цветков Михаил Улебович', 'Березники' );
+
+INSERT INTO Производитель values ('1', 'Пятёрочка', 'Россия' );
+INSERT INTO Производитель values ('2', 'Евраз', 'Великобритания' );
+INSERT INTO Производитель values ('3', 'Икеа', 'Швеция' );
+INSERT INTO Производитель values ('4', 'Макдональдс', 'США' );
+INSERT INTO Производитель values ('5', 'Веон', 'Нидерланды' );
+INSERT INTO Производитель values ('6', 'Семья', 'Россия' );
+INSERT INTO Производитель values ('7', 'Самсунг', 'Южная Корея' );
+INSERT INTO Производитель values ('8', 'КФС', 'США' );
+INSERT INTO Производитель values ('9', 'Гучи', 'Италия' );
+INSERT INTO Производитель values ('10', 'БМВ', 'Швейцария' );
+
+INSERT INTO Производитель values ('1', 'Автомобиль', '1500000' , '10');
+INSERT INTO Производитель values ('2', 'Тряпка', '32000' , '9');
+INSERT INTO Производитель values ('3', 'Баскет', '250' , '8');
+INSERT INTO Производитель values ('4', 'Мороженое', '50' , '6');
+INSERT INTO Производитель values ('5', 'Смартфон', '21000' , '7');
+INSERT INTO Производитель values ('6', '', '' , '');
+INSERT INTO Производитель values ('7', 'Сухарики', '100' , '1');
+INSERT INTO Производитель values ('8', '', '' , '');
+INSERT INTO Производитель values ('9', '', '' , '');
+INSERT INTO Производитель values ('10', '', '' , '');
+
+
+
+
+
+

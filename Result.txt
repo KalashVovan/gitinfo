@@ -1,0 +1,133 @@
+Setting environment for using XAMPP for Windows.
+pl8415@C204N14 c:\temp\xampp
+# C:\TEMP\xampp\mysql\bin\mysql.exe -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.37-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database Countries;
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [(none)]> use Countries;
+Database changed
+MariaDB [Countries]> CREATE TABLE tour ( id INT NOT NULL primary key , country VARCHAR(255) , transport VARCHAR(255) , cost VARCHAR(255) );
+Query OK, 0 rows affected (0.06 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('1', 'France', 'train', '25000');
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('2', 'Japan', 'plain', '35000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('3', 'China', 'train', '30000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('4', 'Kazahstan', 'train', '10000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('5', 'Germany', 'train', '20000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('6', 'Canada', 'plain', '40000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('7', 'Mexico', 'plain', '45000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('8', 'Ukraine', 'train', '15000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('9', 'Russia', 'plain', '50000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> INSERT INTO tour values ('10', 'USA', 'plain', '50000');
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Countries]> select * from tour
+    -> ;
++----+-----------+-----------+-------+
+| id | country   | transport | cost  |
++----+-----------+-----------+-------+
+|  1 | France    | train     | 25000 |
+|  2 | Japan     | plain     | 35000 |
+|  3 | China     | train     | 30000 |
+|  4 | Kazahstan | train     | 10000 |
+|  5 | Germany   | train     | 20000 |
+|  6 | Canada    | plain     | 40000 |
+|  7 | Mexico    | plain     | 45000 |
+|  8 | Ukraine   | train     | 15000 |
+|  9 | Russia    | plain     | 50000 |
+| 10 | USA       | plain     | 50000 |
++----+-----------+-----------+-------+
+10 rows in set (0.03 sec)
+
+MariaDB [Countries]> select * from tour where country='Russia';
++----+---------+-----------+-------+
+| id | country | transport | cost  |
++----+---------+-----------+-------+
+|  9 | Russia  | plain     | 50000 |
++----+---------+-----------+-------+
+1 row in set (0.03 sec)
+
+MariaDB [Countries]> select * from tour where transport='train';
++----+-----------+-----------+-------+
+| id | country   | transport | cost  |
++----+-----------+-----------+-------+
+|  1 | France    | train     | 25000 |
+|  3 | China     | train     | 30000 |
+|  4 | Kazahstan | train     | 10000 |
+|  5 | Germany   | train     | 20000 |
+|  8 | Ukraine   | train     | 15000 |
++----+-----------+-----------+-------+
+5 rows in set (0.00 sec)
+
+MariaDB [Countries]> select * from tour where cost>20000;
++----+---------+-----------+-------+
+| id | country | transport | cost  |
++----+---------+-----------+-------+
+|  1 | France  | train     | 25000 |
+|  2 | Japan   | plain     | 35000 |
+|  3 | China   | train     | 30000 |
+|  6 | Canada  | plain     | 40000 |
+|  7 | Mexico  | plain     | 45000 |
+|  9 | Russia  | plain     | 50000 |
+| 10 | USA     | plain     | 50000 |
++----+---------+-----------+-------+
+7 rows in set (0.00 sec)
+
+MariaDB [Countries]> select * from tour ORDER BY cost;
++----+-----------+-----------+-------+
+| id | country   | transport | cost  |
++----+-----------+-----------+-------+
+|  4 | Kazahstan | train     | 10000 |
+|  8 | Ukraine   | train     | 15000 |
+|  5 | Germany   | train     | 20000 |
+|  1 | France    | train     | 25000 |
+|  3 | China     | train     | 30000 |
+|  2 | Japan     | plain     | 35000 |
+|  6 | Canada    | plain     | 40000 |
+|  7 | Mexico    | plain     | 45000 |
+|  9 | Russia    | plain     | 50000 |
+| 10 | USA       | plain     | 50000 |
++----+-----------+-----------+-------+
+10 rows in set (0.00 sec)
+
+MariaDB [Countries]> select min(cost) from tour;
++-----------+
+| min(cost) |
++-----------+
+| 10000     |
++-----------+
+1 row in set (0.00 sec)
+
+MariaDB [Countries]> select min(cost) from tour where transport='plain';
++-----------+
+| min(cost) |
++-----------+
+| 35000     |
++-----------+
+1 row in set (0.00 sec)
