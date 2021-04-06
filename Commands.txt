@@ -26,6 +26,7 @@ CREATE TABLE Продавец ( id INT NOT NULL primary key , ФИО VARCHAR(255
 CREATE TABLE Покупатель ( id INT NOT NULL primary key , ФИО VARCHAR(255) , Город VARCHAR(255);
 CREATE TABLE Производитель ( id INT NOT NULL primary key , Название VARCHAR(255) , Страна VARCHAR(255));
 CREATE TABLE Товар ( id INT NOT NULL primary key , Название VARCHAR(255) , Стоимость INT ,  Производитель VARCHAR(255));
+CREATE TABLE Продажи ( id INT NOT NULL primary key , Продавец INT , Покупатель INT , Товар INT , Стоимость INT , Дата VARCHAR(225));;
 INSERT INTO Продавец values ('1', 'Зубенко Михаил Петрович', 'Ташкент', '5');
 INSERT INTO Продавец values ('2', 'Силина Александра Андреевна', 'Пермь', '5');
 INSERT INTO Продавец values ('3', 'Александров Кирилл Игоревич', 'Самара', '6');
@@ -64,14 +65,19 @@ INSERT INTO Производитель values ('2', 'Тряпка', '32000' , '9
 INSERT INTO Производитель values ('3', 'Баскет', '250' , '8');
 INSERT INTO Производитель values ('4', 'Мороженое', '50' , '6');
 INSERT INTO Производитель values ('5', 'Смартфон', '21000' , '7');
-INSERT INTO Производитель values ('6', '', '' , '');
+INSERT INTO Производитель values ('6', 'Носки', '899' , '2');
 INSERT INTO Производитель values ('7', 'Сухарики', '100' , '1');
-INSERT INTO Производитель values ('8', '', '' , '');
-INSERT INTO Производитель values ('9', '', '' , '');
-INSERT INTO Производитель values ('10', '', '' , '');
+INSERT INTO Производитель values ('8', 'Бургер', '155' , '4');
+INSERT INTO Производитель values ('9', 'Нефть', '1234' , '5');
+INSERT INTO Производитель values ('10', 'Шкаф', '2000' , '3');
 
-
-
-
-
-
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
