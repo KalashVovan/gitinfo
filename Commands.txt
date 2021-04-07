@@ -1,4 +1,6 @@
+﻿//СУБД 2
 C:\TEMP\xampp\mysql\bin\mysql.exe -u root
+mysql -u root -p
 create database Countries;
 use Countries;
 CREATE TABLE tour ( id INT NOT NULL primary key , country VARCHAR(255) , transport VARCHAR(255) , cost VARCHAR(255) );
@@ -12,6 +14,7 @@ INSERT INTO tour values ('7', 'Mexico', 'plain', '45000');
 INSERT INTO tour values ('8', 'Ukraine', 'train', '15000');
 INSERT INTO tour values ('9', 'Russia', 'plain', '50000');
 INSERT INTO tour values ('10', 'USA', 'plain', '50000');
+//запросы
 select * from tour;
 select * from tour where country='Russia';
 select * from tour where transport='train';
@@ -20,6 +23,9 @@ select * from tour ORDER BY cost;
 select min(cost) from tour;
 select min(cost) from tour where transport='plain';
 
+
+//СУБД 3
+C:\TEMP\xampp\mysql\bin\mysql.exe -u root
 create database 'Продажи_магазина';
 use Продажи_магазина;
 CREATE TABLE Продавец ( id INT NOT NULL primary key , ФИО VARCHAR(255) , Город VARCHAR(255) , Процент INT);
@@ -27,30 +33,34 @@ CREATE TABLE Покупатель ( id INT NOT NULL primary key , ФИО VARCHAR
 CREATE TABLE Производитель ( id INT NOT NULL primary key , Название VARCHAR(255) , Страна VARCHAR(255));
 CREATE TABLE Товар ( id INT NOT NULL primary key , Название VARCHAR(255) , Стоимость INT ,  Производитель VARCHAR(255));
 CREATE TABLE Продажи ( id INT NOT NULL primary key , Продавец INT , Покупатель INT , Товар INT , Стоимость INT , Дата VARCHAR(225));;
+
+//код ФИО город процент
 INSERT INTO Продавец values ('1', 'Зубенко Михаил Петрович', 'Ташкент', '5');
-INSERT INTO Продавец values ('2', 'Силина Александра Андреевна', 'Пермь', '5');
-INSERT INTO Продавец values ('3', 'Александров Кирилл Игоревич', 'Самара', '6');
-INSERT INTO Продавец values ('4', 'Бусыгина Дарья Александровна', 'Омск', '6');
-INSERT INTO Продавец values ('5', 'Винокуров Ян Павлович', 'Гленджик', '7');
-INSERT INTO Продавец values ('6', 'Демидов Данил Иванович', 'Санкт-Петербург', '7');
-INSERT INTO Продавец values ('7', 'Дульцев Артём Игоревич', 'Москва', '8');
-INSERT INTO Продавец values ('8', 'Завальнюк Александр Валерьевич', 'Воронеж', '8');
-INSERT INTO Продавец values ('9', 'Завьялов Вениамин Алексеевич', 'Сочи', '9');
-INSERT INTO Продавец values ('10', 'Конырев Кирилл Андреевич', 'Новороссийск', '9');
+INSERT INTO Продавец values ('2', 'Белов Фёдор Данилович', 'Пермь', '5');
+INSERT INTO Продавец values ('3', 'Антонов Данил Егорович', 'Москва', '6');
+INSERT INTO Продавец values ('4', 'Попова Вероника Гордеевна', 'Санкт-Петербург', '6');
+INSERT INTO Продавец values ('5', 'Кузнецова Екатерина Ивановна', 'Ташкент', '7');
+INSERT INTO Продавец values ('6', 'Журавлев Роман Вадимович', 'Санкт-Петербург', '7');
+INSERT INTO Продавец values ('7', 'Ефремова Татьяна Михайловна', 'Москва', '8');
+INSERT INTO Продавец values ('8', 'Кузнецов Алексей Владимирович', 'Пермь', '8');
+INSERT INTO Продавец values ('9', 'Самсонова Николь Кирилловна', 'Новороссийск', '9');
+INSERT INTO Продавец values ('10', 'Широков Александр Тимофеевич', 'Новороссийск', '9');
 
+//код ФИО город
 INSERT INTO Покупатель values ('1', 'Горбачёв Вакуум Федосеевич', 'Пермь' );
-INSERT INTO Покупатель values ('2', 'Фокин Владислав Вениаминович', 'Москва' );
-INSERT INTO Покупатель values ('3', 'Князев Харитон Богданович', 'Краснодар' );
-INSERT INTO Покупатель values ('4', 'Овчинников Семён Романович', 'Владивосток' );
-INSERT INTO Покупатель values ('5', 'Захарова Анна Глебовна', 'Кострома' );
-INSERT INTO Покупатель values ('6', 'Кудрянцева Виктория Дмитриевна', 'Пенза' );
-INSERT INTO Покупатель values ('7', 'Ситникова Кристина Андреевна', 'Смоленск' );
-INSERT INTO Покупатель values ('8', 'Боброва София Дмитриевна', 'Южно-Сахалинск' );
-INSERT INTO Покупатель values ('9', 'Богданов Герасим Юлианович', 'Екатеринбург' );
-INSERT INTO Покупатель values ('10', 'Цветков Михаил Улебович', 'Березники' );
+INSERT INTO Покупатель values ('2', 'Фокин Владислав Вениаминович', 'Ташкент' );
+INSERT INTO Покупатель values ('3', 'Князев Харитон Богданович', 'Новороссийск' );
+INSERT INTO Покупатель values ('4', 'Овчинников Семён Романович', 'Санкт-Петербург' );
+INSERT INTO Покупатель values ('5', 'Захарова Анна Глебовна', 'Москва' );
+INSERT INTO Покупатель values ('6', 'Кудрянцева Виктория Дмитриевна', 'Санкт-Петербург' );
+INSERT INTO Покупатель values ('7', 'Ситникова Кристина Андреевна', 'Ташкент' );
+INSERT INTO Покупатель values ('8', 'Боброва София Дмитриевна', 'Пермь' );
+INSERT INTO Покупатель values ('9', 'Богданов Герасим Юлианович', 'Новороссийск' );
+INSERT INTO Покупатель values ('10', 'Цветков Михаил Улебович', 'Москва' );
 
+//код название страна
 INSERT INTO Производитель values ('1', 'Пятёрочка', 'Россия' );
-INSERT INTO Производитель values ('2', 'Евраз', 'Великобритания' );
+INSERT INTO Производитель values ('2', 'Евраз', 'Италия' );
 INSERT INTO Производитель values ('3', 'Икеа', 'Швеция' );
 INSERT INTO Производитель values ('4', 'Макдональдс', 'США' );
 INSERT INTO Производитель values ('5', 'Веон', 'Нидерланды' );
@@ -60,24 +70,34 @@ INSERT INTO Производитель values ('8', 'КФС', 'США' );
 INSERT INTO Производитель values ('9', 'Гучи', 'Италия' );
 INSERT INTO Производитель values ('10', 'БМВ', 'Швейцария' );
 
-INSERT INTO Производитель values ('1', 'Автомобиль', '1500000' , '10');
-INSERT INTO Производитель values ('2', 'Тряпка', '32000' , '9');
-INSERT INTO Производитель values ('3', 'Баскет', '250' , '8');
-INSERT INTO Производитель values ('4', 'Мороженое', '50' , '6');
-INSERT INTO Производитель values ('5', 'Смартфон', '21000' , '7');
-INSERT INTO Производитель values ('6', 'Носки', '899' , '2');
-INSERT INTO Производитель values ('7', 'Сухарики', '100' , '1');
-INSERT INTO Производитель values ('8', 'Бургер', '155' , '4');
-INSERT INTO Производитель values ('9', 'Нефть', '1234' , '5');
-INSERT INTO Производитель values ('10', 'Шкаф', '2000' , '3');
+//код название стоимость производитель(код)
+INSERT INTO Товар values ('1', 'Автомобиль', '1500000' , '10' );
+INSERT INTO Товар values ('2', 'Тряпка', '32000' , '9' );
+INSERT INTO Товар values ('3', 'Баскет', '250' , '8' );
+INSERT INTO Товар values ('4', 'Мороженое', '50' , '6' );
+INSERT INTO Товар values ('5', 'Смартфон', '21000' , '7' );
+INSERT INTO Товар values ('6', 'Носки', '899' , '2' );
+INSERT INTO Товар values ('7', 'Сухарики', '100' , '1' );
+INSERT INTO Товар values ('8', 'Бургер', '155' , '4' );
+INSERT INTO Товар values ('9', 'Нефть', '1234' , '5' );
+INSERT INTO Товар values ('10', 'Шкаф', '2000' , '3' );
 
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
-INSERT INTO Продажи values ('', '' , '' , '' , '' , '' );
+//код продавец покупатель товар стоимость дата
+INSERT INTO Продажи values ('1', '3' , '5' , '7' , '100' , '01.01.2020' );
+INSERT INTO Продажи values ('2', '4' , '6' , '8' , '155' , '02.02.2020' );
+INSERT INTO Продажи values ('3', '5' , '7' , '9' , '1234' , '03.03.2020' );
+INSERT INTO Продажи values ('4', '6' , '8' , '10' , '2000' , '04.04.2020' );
+INSERT INTO Продажи values ('5', '7' , '9' , '1' , '1500000' , '05.05.2020' );
+INSERT INTO Продажи values ('6', '8' , '10' , '2' , '32000' , '01.01.2020' );
+INSERT INTO Продажи values ('7', '9' , '1' , '3' , '250' , '02.02.2020' );
+INSERT INTO Продажи values ('8', '10' , '2' , '4' , '50' , '03.03.2020' );
+INSERT INTO Продажи values ('9', '1' , '3' , '5' , '21000' , '04.04.2020' );
+INSERT INTO Продажи values ('10', '2' , '4' , '6' , '899' , '05.05.2020' );
+
+//запросы
+select * from Продавец where Город='Пермь';
+select min(Процент) from Продавец;
+продавцы и их покупатели
+select * from Продавец, Покупатель where Город='Пермь';
+товар и его производитель
+select * from Продажи where Дата='01.01.2020'
