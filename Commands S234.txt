@@ -108,9 +108,9 @@ drop database Sportzal;
 create database Sportzal character set utf8;
 use Sportzal;
 CREATE TABLE Залы ( id INT NOT NULL primary key , Номер_зала INT , Адрес VARCHAR(255) , Контактный_телефон BIGINT);
-CREATE TABLE Типы_занятий ( id INT NOT NULL primary key , Зал INT , foreign key (Зал) references Залы (id) , Название VARCHAR(255) , Инвентарь VARCHAR(255));
-CREATE TABLE Тренеры ( id INT NOT NULL primary key , Тип_занятия INT , foreign key (Тип_занятия) references Типы_занятий (id) , ФИО VARCHAR(255) , Контактный_телефон BIGINT , Стоимость_тренировки INT);
-CREATE TABLE Клиенты ( id INT NOT NULL primary key , ФИО VARCHAR(255) , Контактный_телефон BIGINT , Вид_абонемента VARCHAR(255));
+CREATE TABLE Типы_занятий ( id INT NOT NULL primary key , Зал INT , foreign key (Зал) references Залы (id) , Тип_занятия VARCHAR(255) , Инвентарь VARCHAR(255));
+CREATE TABLE Тренеры ( id INT NOT NULL primary key , Спорт INT , foreign key (Спорт) references Типы_занятий (id) , ФИО_тренера VARCHAR(255) , Контактный_телефон BIGINT , Стоимость_тренировки INT);
+CREATE TABLE Клиенты ( id INT NOT NULL primary key , ФИО_клиента VARCHAR(255) , Контактный_телефон BIGINT , Вид_абонемента VARCHAR(255));
 CREATE TABLE Абонемент ( id INT NOT NULL primary key ,  Тренер INT , foreign key (Тренер) references Тренеры (id) , Клиент INT , foreign key (Клиент) references Клиенты (id) );
 INSERT INTO Залы values ('1' , '101' , 'Ленина 5' , '89127392047' );
 INSERT INTO Залы values ('2' , '202' , 'Пушкина 27' , '89120395724' );
@@ -138,4 +138,6 @@ INSERT INTO Абонемент values ('3' , '3' , '3' );
 INSERT INTO Абонемент values ('4' , '4' , '4' );
 INSERT INTO Абонемент values ('5' , '5' , '5' );
 
-select * from Абонемент;
+
+
+select Абонемент.id, Тренеры.ФИО_тренера, Тренеры.Контактный_телефон, Типы_занятий.Тип_занятия, Типы_занятий.Инвентарь, Залы.Номер_зала, Залы.Адрес, Залы.Контактный_телефон, Клиенты.ФИО_клиента, Клиенты.Контактный_телефон, Клиенты.Вид_абонемента from Залы, Типы_занятий, Тренеры, Клиенты, Абонемент where Залы.id=Типы_занятий.Зал and Типы_занятий.id=Тренеры.Спорт and Абонемент.Тренер=Тренеры.id and Абонемент.Клиент=Клиенты.id;
