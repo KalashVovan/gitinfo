@@ -1,0 +1,14 @@
+all)select * from ptpit_groups, ptpit_students, ptpit_turniket where ptpit_students.groupId=ptpit_groups.id and ptpit_turniket.studentId=ptpit_students.id;
+а)select * from ptpit_students where deleted=1 ORDER BY ptpit_students.name;
+б)select ptpit_groups.groupname from ptpit_groups where course>=3;
+в)select * from ptpit_turniket where (ptpit_turniket.start_date >= '2018-12-01') and (ptpit_turniket.start_date < '2018-12-02');
+г)select * from ptpit_turniket where end_date>'2018-10-01 17:40';
+д)select * from ptpit_turniket where end_date>'2018-10-01' and end_date<'2018-12-01';
+е)select * from ptpit_groups where ptpit_groups.name='Графический_дизайн';
+ж)select * from ptpit_students where ptpit_students.groupId=4 and ptpit_groups.groupname='17СПИ1' ORDER BY ptpit_students.name;
+з)select * from ptpit_students where ptpit_students.groupId=2 ORDER BY name;
+и)select ptpit_students.name from ptpit_students, ptpit_turniket where end_date> and end_date< ORDER BY end_date;
+к)select ptpit_students.id, ptpit_students.name, ptpit_students.groupId, ptpit_students.deleted, ptpit_students.subgroup, ptpit_students.hostel_id from ptpit_groups, ptpit_students, ptpit_turniket where start_date>'18-10-1' ORDER BY ptpit_groups.groupname, ptpit_students.name;
+л)select ptpit_students.id, ptpit_students.name, ptpit_students.groupId, ptpit_students.deleted, ptpit_students.subgroup, ptpit_students.hostel_id from ptpit_groups, ptpit_students, ptpit_turniket where ptpit_groups.groupname=19Н3 and start_date>'18-10-1' ORDER BY ptpit_groups.groupname, ptpit_students.name;
+н)select ptpit_students.name, ptpit_groups.groupname from ptpit_groups, ptpit_students, ptpit_turniket where start_date>'18-10-1' ORDER BY ptpit_groups.groupname, ptpit_students.name;
+о)select ptpit_students.name, ptpit_groups.groupname from ptpit_groups, ptpit_students, ptpit_turniket where end_date>'18-10-1' ORDER BY ptpit_groups.groupname, ptpit_students.name;

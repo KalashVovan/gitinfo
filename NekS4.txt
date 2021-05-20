@@ -1,22 +1,17 @@
-create database Vokzal;
+drop database Vokzal;
+create database Vokzal character set utf8;
 use Vokzal;
-CREATE TABLE Рейс ( id INT NOT NULL primary key , Пункт_отправления VARCHAR(255) , Пункт_назначения VARCHAR(255) , Цена_билета INT , ОстановкиII INT );
-CREATE TABLE Водитель ( id INT NOT NULL primary key , ФИО VARCHAR(255) , Телефон INT , Возраст INT , Пол VARCHAR(255) );
+CREATE TABLE Водители ( id INT NOT NULL primary key , ФИО VARCHAR(255) , Телефон INT , Возраст INT , Пол VARCHAR(255) );
 CREATE TABLE Остановки ( id INT NOT NULL primary key , Остановка_1 VARCHAR(255) , Остановка_2 VARCHAR(255) , Остановка_3 VARCHAR(255) , Остановка_4 VARCHAR(255) );
-CREATE TABLE Автобус ( id INT NOT NULL primary key , Марка VARCHAR(255) , Номер INT , ВодительII INT , Число_мест INT );
-CREATE TABLE Маршрут ( id INT NOT NULL primary key , АвтобусII INT , РейсII INT , Время_отправления VARCHAR(255) , Время_прибытия VARCHAR(255) );
+CREATE TABLE Рейсы ( id INT NOT NULL primary key , Пункт_отправления VARCHAR(255) , Пункт_назначения VARCHAR(255) , Цена_билета INT , Остановки INT , foreign key (Остановки) references Остановки (id) );
+CREATE TABLE Автобусы ( id INT NOT NULL primary key , Марка VARCHAR(255) , Номер INT , Водитель INT , foreign key (Водитель) references Водители (id) , Число_мест INT );
+CREATE TABLE Маршруты ( id INT NOT NULL primary key , Автобус INT , foreign key (Автобус) references Автобусы (id) , Рейс INT , foreign key (Рейс) references Рейсы (id) , Время_отправления VARCHAR(255) , Время_прибытия VARCHAR(255) );
 
-INSERT INTO Рейс values ('1' , 'Пермь' , 'Москва' , '2000' , 'l');
-INSERT INTO Рейс values ('2' , 'Пермь' , 'Санкт-Петербург' , '500' , 'l');
-INSERT INTO Рейс values ('3' , 'Пермь' , 'Воронеж' , '500' , 'l');
-INSERT INTO Рейс values ('4' , 'Пермь' , 'Псков' , '550' , 'l');
-INSERT INTO Рейс values ('5' , 'Пермь' , 'Уфа' , '1200' , 'l');
-
-INSERT INTO Водитель values ('1' , 'Глебов Андрей Иванович' , '88005553535' , '46' , 'М');
-INSERT INTO Водитель values ('2' , 'Павлова Маргарита Давидовна' , '89152476985' , '38' , 'Ж');
-INSERT INTO Водитель values ('3' , 'Семёнов Алексей Михайлович' , '89623157948' , '47' , 'М');
-INSERT INTO Водитель values ('4' , 'Глебова Арина Никитична' , '89531627452' , '48' , 'Ж');
-INSERT INTO Водитель values ('5' , 'Захаров Кирилл Максимович' , '89567243512' , '49' , 'М');
+INSERT INTO Водители values ('1' , 'Глебов Андрей Иванович' , '88005553535' , '46' , 'М');
+INSERT INTO Водители values ('2' , 'Павлова Маргарита Давидовна' , '89152476985' , '38' , 'Ж');
+INSERT INTO Водители values ('3' , 'Семёнов Алексей Михайлович' , '89623157948' , '47' , 'М');
+INSERT INTO Водители values ('4' , 'Глебова Арина Никитична' , '89531627452' , '48' , 'Ж');
+INSERT INTO Водители values ('5' , 'Захаров Кирилл Максимович' , '89567243512' , '49' , 'М');
 
 INSERT INTO Остановки values ('1' , 'Овощная база' , 'ул. Ленина' , 'ул. Пушкина' , 'Поликлиника им. Пичугина');
 INSERT INTO Остановки values ('2' , 'ул. Трактовая' , 'ул. 40 лет победы' , 'ул. Чкалова' , 'ул. Комсомольская');
@@ -24,14 +19,22 @@ INSERT INTO Остановки values ('3' , 'Площадь Карла Марк
 INSERT INTO Остановки values ('4' , 'ул. Мира' , 'шоссе Космонавтов' , 'ул. ДК им. Ленина' , 'ул. Коминтерна');
 INSERT INTO Остановки values ('5' , 'ул. Белинская' , 'ул. Тимирязова' , 'ул. Швецова' , 'ул. Революции');
 
-INSERT INTO Автобус values ('1' , 'BMW' , '234' , 'l' , '32');
-INSERT INTO Автобус values ('2' , 'Mercedes' , '456' , 'l' , '32');
-INSERT INTO Автобус values ('3' , 'Газ' , '789' , 'l' , '34');
-INSERT INTO Автобус values ('4' , 'BMW' , '232' , 'l' , '36');
-INSERT INTO Автобус values ('5' , 'Mercedes' , '112' , 'l' , '40');
+INSERT INTO Рейсы values ('1' , 'Пермь' , 'Москва' , '2000' , '1');
+INSERT INTO Рейсы values ('2' , 'Пермь' , 'Санкт-Петербург' , '500' , '2');
+INSERT INTO Рейсы values ('3' , 'Пермь' , 'Воронеж' , '500' , '3');
+INSERT INTO Рейсы values ('4' , 'Пермь' , 'Псков' , '550' , '4');
+INSERT INTO Рейсы values ('5' , 'Пермь' , 'Уфа' , '1200' , '5');
 
-INSERT INTO Маршрут values ('1' , 'l' , 'l' , '00:00' , '15:00');
-INSERT INTO Маршрут values ('2' , 'l' , 'l' , '15:30' , '22:00');
-INSERT INTO Маршрут values ('3' , 'l' , 'l' , '13:50' , '23:00');
-INSERT INTO Маршрут values ('4' , 'l' , 'l' , '10:00' , '10:01');
-INSERT INTO Маршрут values ('5' , 'l' , 'l' , '12:05' , '19:00');
+INSERT INTO Автобусы values ('1' , 'BMW' , '234' , '1' , '32');
+INSERT INTO Автобусы values ('2' , 'Mercedes' , '456' , '2' , '32');
+INSERT INTO Автобусы values ('3' , 'Газ' , '789' , '3' , '34');
+INSERT INTO Автобусы values ('4' , 'BMW' , '232' , '4' , '36');
+INSERT INTO Автобусы values ('5' , 'Mercedes' , '112' , '5' , '40');
+
+INSERT INTO Маршруты values ('1' , '1' , '1' , '00:00' , '15:00');
+INSERT INTO Маршруты values ('2' , '2' , '2' , '15:30' , '22:00');
+INSERT INTO Маршруты values ('3' , '3' , '3' , '13:50' , '23:00');
+INSERT INTO Маршруты values ('4' , '4' , '4' , '10:00' , '10:01');
+INSERT INTO Маршруты values ('5' , '5' , '5' , '12:05' , '19:00');
+
+select Маршруты.id, Маршруты.Время_отправления, Маршруты.Время_прибытия, Автобусы.Марка, Автобусы.Номер, Автобусы.Число_мест, Водители.ФИО, Водители.Телефон, Водители.Возраст, Водители.Пол, Рейсы.Пункт_отправления, Рейсы.Пункт_назначения, Рейсы.Цена_билета, Остановки.Остановка_1, Остановки.Остановка_2, Остановки.Остановка_3, Остановки.Остановка_4 from Водители, Остановки, Рейсы, Автобусы, Маршруты where Маршруты.Автобус=Автобусы.id and Маршруты.Рейс=Рейсы.id and Автобусы.Водитель=Водители.id and Рейсы.Остановки=Остановки.id;
